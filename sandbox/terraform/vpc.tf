@@ -3,7 +3,7 @@ data "aws_ssm_parameter" "cidr_block" {
 }
 
 resource "aws_vpc" "main" {
- cidr_block = ${data.aws_ssm_parameter.cidr_block}
+ cidr_block = data.aws_ssm_parameter.cidr_block.value
  
  tags = {
    Name = "sandbox VPC"
